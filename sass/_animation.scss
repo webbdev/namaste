@@ -1,0 +1,56 @@
+.slideanim {
+  visibility: hidden;
+}
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-moz-keyframes #{$name} {
+    @content
+  }
+  @-ms-keyframes #{$name} {
+    @content
+  }
+  @-webkit-keyframes #{$name} {
+    @content
+  }
+  @keyframes #{$name} {
+    @content
+  }
+}
+
+.slide {
+  animation-name: slide;
+  -webkit-animation-name: slide;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  visibility: visible;
+
+  @include keyframes(slide) {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+
+
+.slidebtn {
+  -webkit-animation: slidebtn 3s infinite;
+  animation: slidebtn 3s infinite;
+
+  @include keyframes(slidebtn) {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(30px); 
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
